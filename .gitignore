@@ -22,3 +22,6 @@ vendor/*
 
 # run tmp file
 tmp/*
+
+# config file
+*.yaml
