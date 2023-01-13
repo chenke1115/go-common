@@ -1,9 +1,3 @@
-<!--
- * @Author: changge <changge1519@gmail.com>
- * @Date: 2022-11-15 15:28:31
- * @LastEditTime: 2023-01-13 15:15:44
- * @Description: Do not edit
--->
 # go-common
 Common components of golang
 
