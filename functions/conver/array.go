@@ -1,7 +1,7 @@
 /*
  * @Author: changge <changge1519@gmail.com>
  * @Date: 2022-11-17 15:23:25
- * @LastEditTime: 2022-11-17 15:36:38
+ * @LastEditTime: 2023-01-13 15:00:00
  * @Description: Do not edit
  */
 package conver
@@ -37,6 +37,22 @@ func StructToArray(data interface{}) (strArr []string) {
 	for i := 0; i < typeInfo.NumField(); i++ {
 		val := valInfo.Field(i).Interface()
 		strArr = append(strArr, val.(string))
+	}
+
+	return
+}
+
+/**
+ * @description: Conver struct To int array
+ * @param {interface{}} data
+ * @return {*}
+ */
+func StructToIntArray(data interface{}) (intArr []int) {
+	typeInfo := reflect.TypeOf(data)
+	valInfo := reflect.ValueOf(data)
+	for i := 0; i < typeInfo.NumField(); i++ {
+		val := valInfo.Field(i).Interface()
+		intArr = append(intArr, val.(int))
 	}
 
 	return

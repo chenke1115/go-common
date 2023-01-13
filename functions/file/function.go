@@ -1,12 +1,16 @@
 /*
  * @Author: changge <changge1519@gmail.com>
  * @Date: 2022-10-21 10:13:31
- * @LastEditTime: 2022-10-21 10:18:18
+ * @LastEditTime: 2023-01-13 15:02:09
  * @Description: Do not edit
  */
 package file
 
-import "os"
+import (
+	"os"
+	"path"
+	"runtime"
+)
 
 /**
  * @description: create dir
@@ -21,4 +25,26 @@ func MakeDir(dir string) (err error) {
 	err = os.MkdirAll(dir, os.ModePerm)
 
 	return
+}
+
+/**
+ * @description: Get root path by os
+ * @return {*}
+ */
+func GetRootPath() string {
+	rootPath, _ := os.Getwd()
+	return rootPath
+}
+
+/**
+ * @description: Get current ab path By caller
+ * @return {*}
+ */
+func GetCurrentAbPathByCaller() string {
+	var abPath string
+	_, filename, _, ok := runtime.Caller(0)
+	if ok {
+		abPath = path.Dir(filename)
+	}
+	return abPath
 }
