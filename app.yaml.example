@@ -3,6 +3,9 @@ Debug: true
 
 # App
 App:
+  Domain: 
+    Api: "http://127.0.0.1:8080"
+    Web: "http://127.0.0.1:10086"
   Name: "go-common"
   User:
     Super: ["super_user", "sys_admin"]
@@ -20,6 +23,10 @@ Server:
 # Log config
 Log:
   Dir: "./logs/"
+  MaxSize: 20     # A file can be up to 20M.
+  MaxBackups: 5   # Save up to 5 files at the same time.
+  MaxAge: 10      # A file can exist for a maximum of 10 days.
+  Compress: true  # Compress with gzip.
 
 # Database config
 Database:
@@ -35,7 +42,8 @@ Redis:
   Network: "tcp"
   Addr: ":6379"
   Password:
-  Size: 10
+  DB:0
+  Size: 100
 
 # Session
 Session:
@@ -47,3 +55,18 @@ Session:
 # Swagger config
 Swagger:
   Host: ":8080"
+
+# Upload
+Upload:
+  Host: "http://baidu.com"
+  Dir: "./uploads/"
+
+# Wechat
+Wechat:
+  AppId: "wx9e9c2959786941bf"
+  AppSecret:
+  AccessToken:
+  Tpl: [] # template ids
+  Url:
+    Redirect:
+    H5:

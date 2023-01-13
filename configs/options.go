@@ -1,7 +1,7 @@
 /*
  * @Author: changge <changge1519@gmail.com>
  * @Date: 2022-11-15 15:32:42
- * @LastEditTime: 2022-11-18 14:42:08
+ * @LastEditTime: 2022-12-23 15:40:54
  * @Description: Do not edit
  */
 package configs
@@ -15,6 +15,8 @@ type Options struct {
 	Redis    Redis    `json:"redis" yaml:"Redis"`
 	Session  Session  `json:"session" yaml:"Session"`
 	Swagger  Swagger  `json:"swagger" yaml:"Swagger"`
+	Upload   Upload   `json:"upload" yaml:"Upload"`
+	Wechat   Wechat   `json:"wechat" yaml:"Wechat"`
 }
 
 /**
