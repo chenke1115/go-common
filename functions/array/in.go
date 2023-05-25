@@ -1,7 +1,7 @@
 /*
  * @Author: changge <changge1519@gmail.com>
  * @Date: 2022-09-30 10:50:33
- * @LastEditTime: 2022-11-17 15:27:00
+ * @LastEditTime: 2023-05-25 16:01:01
  * @Description: Do not edit
  */
 package array
@@ -17,34 +17,22 @@ import (
  * @return {*}
  */
 func In(val interface{}, array interface{}) bool {
-	// type of []string
-	if strArr, ok := array.([]string); ok {
-		// string
-		str, _ := val.(string)
-		return InArray(str, strArr)
+	switch arr := array.(type) {
+	case []string:
+		v, _ := val.(string)
+		return InArray(v, arr)
+	case []int, []int8, []int16, []int32, []int64, []uint8, []uint16, []uint32, []uint64:
+		return InIntArray(val, arr)
+	case float32, float64:
+		return InFloatArray(val, arr)
+	case map[int]interface{}, map[string]interface{}:
+		return InMapArray(val, arr)
+	default:
+		return false
 	}
-
-	// type of []int
-	if intArr, ok := array.([]int); ok {
-		i, _ := val.(int)
-		return InIntArray(i, intArr)
-	}
-
-	// type of map[string]interface{}
-	if strArr, ok := array.(map[string]interface{}); ok {
-		str, _ := val.(string)
-		return InMapArray(str, strArr)
-	}
-
-	return false
 }
 
-/**
- * @description: Judge str in strArr
- * @param {string} str
- * @param {[]string} strArr
- * @return {*}
- */
+// 字符型数组包含元素判断
 func InArray(str string, strArr []string) bool {
 	// sort
 	sort.Strings(strArr)
@@ -57,33 +45,122 @@ func InArray(str string, strArr []string) bool {
 	return false
 }
 
-/**
- * @description: []int
- * @param {int} item
- * @param {[]int} items
- * @return {*}
- */
-func InIntArray(item int, items []int) bool {
-	for _, val := range items {
-		if val == item {
-			return true
+// 整型数组包含元素判断
+func InIntArray(val interface{}, array interface{}) bool {
+	switch arr := array.(type) {
+	case []int:
+		v, _ := val.(int)
+		for _, item := range arr {
+			if v == item {
+				return true
+			}
 		}
+	case []int8:
+		v, _ := val.(int8)
+		for _, item := range arr {
+			if v == item {
+				return true
+			}
+		}
+	case []int16:
+		v, _ := val.(int16)
+		for _, item := range arr {
+			if v == item {
+				return true
+			}
+		}
+	case []int32:
+		v, _ := val.(int32)
+		for _, item := range arr {
+			if v == item {
+				return true
+			}
+		}
+	case []int64:
+		v, _ := val.(int64)
+		for _, item := range arr {
+			if v == item {
+				return true
+			}
+		}
+	case []uint8:
+		v, _ := val.(uint8)
+		for _, item := range arr {
+			if v == item {
+				return true
+			}
+		}
+	case []uint16:
+		v, _ := val.(uint16)
+		for _, item := range arr {
+			if v == item {
+				return true
+			}
+		}
+	case []uint32:
+		v, _ := val.(uint32)
+		for _, item := range arr {
+			if v == item {
+				return true
+			}
+		}
+	case []uint64:
+		v, _ := val.(uint64)
+		for _, item := range arr {
+			if v == item {
+				return true
+			}
+		}
+	default:
+		return false
 	}
 
 	return false
 }
 
-/**
- * @description: Judge str in mapArr
- * @param {string} str
- * @param {map[string]interface{}} mapArr
- * @return {*}
- */
-func InMapArray(str string, mapArr map[string]interface{}) bool {
-	for _, v := range mapArr {
-		if v == str {
-			return true
+// 浮点数组包含元素判断
+func InFloatArray(val interface{}, array interface{}) bool {
+	switch arr := array.(type) {
+	case []float32:
+		v, _ := val.(float32)
+		for _, item := range arr {
+			if v == item {
+				return true
+			}
 		}
+	case []float64:
+		v, _ := val.(float64)
+		for _, item := range arr {
+			if v == item {
+				return true
+			}
+		}
+	default:
+		return false
+	}
+
+	return false
+}
+
+// Map数组包含元素判断
+func InMapArray(val interface{}, array interface{}) bool {
+	switch arr := array.(type) {
+	case map[string]interface{}:
+		v, _ := val.(string)
+		for _, item := range arr {
+			if v == item {
+				return true
+			}
+		}
+	case map[int]interface{}:
+		v, _ := val.(int)
+		for _, item := range arr {
+			if v == item {
+				return true
+			}
+		}
+	default:
+		return false
 	}
 
 	return false
