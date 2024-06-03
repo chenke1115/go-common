@@ -54,7 +54,11 @@ Session:
 
 # Swagger config
 Swagger:
-  Host: ":8080"
+  Version: 1.0.0
+  Host: "127.0.0.1:8080"
+  BasePath: "/"
+  Schemes: ["http"]
+  Title: "go-common"
 
 # Upload
 Upload:
